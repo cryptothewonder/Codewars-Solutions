@@ -1,0 +1,24 @@
+// Simple interest on a loan is calculated by simply taking the initial amount (the principal, p) and multiplying it by a rate of interest (r) and the number of time periods (n).
+
+// Compound interest is calculated by adding the interest after each time period to the amount owed, then calculating the next interest payment based on the principal PLUS the interest from all previous periods.
+
+// Given a principal p, interest rate r, and a number of periods n, return an array [ total owed under simple interest, total owed under compound interest ]
+
+
+//solution
+
+function interest(P,r,n) {
+  let x = P
+  for (let i = 1; i <=n; i++ ){
+    x += x*r
+  }
+  
+  return [Math.round(P+P*r*n), Math.round(x)]
+  
+  // your code here
+}
+
+function interest($, r, n) {
+    const dif = (x, y, z) => z > 0 ? dif(x + x*y, y, z-1) : Math.round(x);
+    return [Math.round($ + $*r*n), dif($, r, n)]
+  }
